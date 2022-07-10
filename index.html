@@ -30,6 +30,9 @@ function addCounter() {
   var template = document.querySelector('#templates .counter');
   var countersContainer = document.querySelector('.container #counters');
   var clonedTemplate = template.cloneNode(true);
+  var start = Date.now();
+  clonedTemplate.querySelector("span.created").textContent = Date.now();
+  clonedTemplate.querySelector("span.updated").textContent = Date.now();
   countersContainer.appendChild(clonedTemplate);
 }
 
