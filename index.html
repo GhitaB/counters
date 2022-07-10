@@ -8,15 +8,37 @@
   <body>
     <div class="container">
       <div id="counters">
+        <p>asdasd</p>
       </div>
+
+      <div id="templates" style="display: none;">
+        <div class="counter">
+          <span class="number">0</span>
+          <div contenteditable="true">items</div>
+          <button class="more">more</button>
+          <button class="less">less</button>
+          <span>created: <span class="created"></span></span>
+          <span>updated: <span class="updated"></span></span>
+        </div>
+      </div>
+
       <button id="add-counter">Add counter</button>
     </div>
     <script>
+
+function addCounter() {
+  var template = document.querySelector('#templates .counter');
+  var countersContainer = document.querySelector('.container #counters');
+  var clonedTemplate = template.cloneNode(true);
+  countersContainer.appendChild(clonedTemplate);
+}
+
 document.addEventListener('click', function (event) {
   if (!event.target.matches('#add-counter')) return;
   event.preventDefault();
-  console.log(event.target);
+  addCounter();
 }, false);
+
     </script>
   </body>
 </html>
