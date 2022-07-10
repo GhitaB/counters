@@ -58,7 +58,8 @@ document.addEventListener('click', function (event) {
   }
   if (event.target.matches('.delete')) {
     event.preventDefault();
-    deleteCounter("c0");
+    var counterId = event.target.parentElement.id;
+    deleteCounter(counterId);
   }
   return;
 }, false);
