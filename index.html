@@ -38,12 +38,16 @@ function addCounter() {
   var start = Date.now();
   clonedTemplate.querySelector("span.created").textContent = Date.now();
   clonedTemplate.querySelector("span.updated").textContent = Date.now();
-  clonedTemplate.id = window.settings.countersNumber;
+  clonedTemplate.id = "c" + window.settings.countersNumber;
   window.settings.countersNumber += 1;
   countersContainer.appendChild(clonedTemplate);
 }
 
-function deleteCounter() {
+function deleteCounter(counterId) {
+  var counter = document.querySelector(
+    '.container #counters .counter#' + counterId + ' '
+  );
+  counter.remove();
   console.log("Counter deleted");
 }
 
@@ -54,7 +58,7 @@ document.addEventListener('click', function (event) {
   }
   if (event.target.matches('.delete')) {
     event.preventDefault();
-    deleteCounter();
+    deleteCounter("c0");
   }
   return;
 }, false);
