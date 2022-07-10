@@ -17,6 +17,7 @@
           <div contenteditable="true">items</div>
           <button class="more">more</button>
           <button class="less">less</button>
+          <button class="delete">delete</button>
           <span>created: <span class="created"></span></span>
           <span>updated: <span class="updated"></span></span>
         </div>
@@ -36,10 +37,20 @@ function addCounter() {
   countersContainer.appendChild(clonedTemplate);
 }
 
+function deleteCounter() {
+  console.log("Counter deleted");
+}
+
 document.addEventListener('click', function (event) {
-  if (!event.target.matches('#add-counter')) return;
-  event.preventDefault();
-  addCounter();
+  if (event.target.matches('#add-counter')) {
+    event.preventDefault();
+    addCounter();
+  }
+  if (event.target.matches('.delete')) {
+    event.preventDefault();
+    deleteCounter();
+  }
+  return;
 }, false);
 
     </script>
