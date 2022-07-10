@@ -27,6 +27,10 @@
     </div>
     <script>
 
+window.settings = {
+  countersNumber: 0
+};
+
 function addCounter() {
   var template = document.querySelector('#templates .counter');
   var countersContainer = document.querySelector('.container #counters');
@@ -34,6 +38,8 @@ function addCounter() {
   var start = Date.now();
   clonedTemplate.querySelector("span.created").textContent = Date.now();
   clonedTemplate.querySelector("span.updated").textContent = Date.now();
+  clonedTemplate.id = window.settings.countersNumber;
+  window.settings.countersNumber += 1;
   countersContainer.appendChild(clonedTemplate);
 }
 
