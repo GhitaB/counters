@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Counters</title>
+  </head>
+  <body>
+    <div class="container">
+      <div id="counters">
+      </div>
+      <button id="add-counter">Add counter</button>
+    </div>
+    <script>
+document.addEventListener('click', function (event) {
+  if (!event.target.matches('#add-counter')) return;
+  event.preventDefault();
+  console.log(event.target);
+}, false);
+    </script>
+  </body>
+</html>
