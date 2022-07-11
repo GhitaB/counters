@@ -97,6 +97,7 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('.editable')) {
     event.preventDefault();
     var counterId = event.target.parentElement.id;
+    window.settings.countersInfo[counterId].text = event.target.textContent;  // TODO fix bug: you must click again the span after changing the text to have the value saved
     updateCounter(counterId);
   }
 
