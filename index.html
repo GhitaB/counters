@@ -60,6 +60,7 @@ function addCounter() {
   window.settings.countersNumber += 1;
   window.settings.countersInfo[counterId] = {
     text: 'items',
+    number: 0,
     created: now,
     updated: now
   };
@@ -106,6 +107,7 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('.number')) {
     event.preventDefault();
     var counterId = event.target.parentElement.id;
+    window.settings.countersInfo[counterId].number = event.target.value;  // TODO fix bug: you must click again the span after changing the text to have the value saved
     updateCounter(counterId);
   }
 
@@ -122,7 +124,6 @@ document.addEventListener('click', function (event) {
 
 restoreSettings();
 
-// TODO: save numbers, too
     </script>
 
     <style>
