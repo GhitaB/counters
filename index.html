@@ -61,7 +61,9 @@ function deleteCounter(counterId) {
     '.container #counters .counter#' + counterId + ' '
   );
   counter.remove();
+  delete window.settings.countersInfo[counterId];
   console.log("Counter deleted");
+  console.log(window.settings);
 }
 
 function updateCounter(counterId) {
