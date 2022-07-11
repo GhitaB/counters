@@ -32,6 +32,18 @@ window.settings = {
   }
 };
 
+function saveSettings() {
+  localStorage.setItem('countersConfig', JSON.stringify(window.settings));
+  console.log("Settings saved.");
+}
+
+function restoreSettings() {
+  var configuration = localStorage.getItem('countersConfig');
+  console.log("Found old config.");
+  console.log(configuration);
+  window.settings = JSON.parse(configuration);
+}
+
 function nowTime() {
   return new Date().toLocaleString('en-GB', { timeZone: 'UTC' });
 }
@@ -54,6 +66,7 @@ function addCounter() {
   countersContainer.appendChild(clonedTemplate);
   console.log("Counter added.");
   console.log(window.settings);
+  saveSettings();
 }
 
 function deleteCounter(counterId) {
@@ -64,6 +77,7 @@ function deleteCounter(counterId) {
   delete window.settings.countersInfo[counterId];
   console.log("Counter deleted");
   console.log(window.settings);
+  saveSettings();
 }
 
 function updateCounter(counterId) {
@@ -74,6 +88,7 @@ function updateCounter(counterId) {
   counter.querySelector("span.updated").textContent = now;
   window.settings.countersInfo[counterId].updated = now;
   console.log("Counter updated");
+  saveSettings();
 }
 
 document.addEventListener('click', function (event) {
@@ -99,11 +114,15 @@ document.addEventListener('click', function (event) {
     var counterId = event.target.parentElement.id;
     window.settings.countersInfo[counterId].text = event.target.textContent;  // TODO fix bug: you must click again the span after changing the text to have the value saved
     updateCounter(counterId);
+    saveSettings();
   }
 
   return;
 }, false);
 
+restoreSettings();
+
+// TODO: save numbers, too
     </script>
 
     <style>
