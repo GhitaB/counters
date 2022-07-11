@@ -29,17 +29,20 @@ window.settings = {
   countersNumber: 0
 };
 
-function addCounter() {
-  var template = document.querySelector('#templates .counter');
-  var countersContainer = document.querySelector('.container #counters');
-  var clonedTemplate = template.cloneNode(true);
-  var now = new Date().toLocaleString('en-US', {
+function nowTime() {
+  return new Date().toLocaleString('en-US', {
     dateStyle: 'long',
     timeStyle: 'short',
     hour12: true
   });
-  clonedTemplate.querySelector("span.created").textContent = now;
-  clonedTemplate.querySelector("span.updated").textContent = now;
+}
+
+function addCounter() {
+  var template = document.querySelector('#templates .counter');
+  var countersContainer = document.querySelector('.container #counters');
+  var clonedTemplate = template.cloneNode(true);
+  clonedTemplate.querySelector("span.created").textContent = nowTime();
+  clonedTemplate.querySelector("span.updated").textContent = nowTime();
   clonedTemplate.id = "c" + window.settings.countersNumber;
   window.settings.countersNumber += 1;
   countersContainer.appendChild(clonedTemplate);
@@ -57,13 +60,7 @@ function updateCounter(counterId) {
   var counter = document.querySelector(
     '.container #counters .counter#' + counterId + ' '
   );
-  var now = new Date().toLocaleString('en-US', {
-    dateStyle: 'long',
-    timeStyle: 'short',
-    hour12: true
-  });
-  debugger;
-  counter.querySelector("span.updated").textContent = now;
+  counter.querySelector("span.updated").textContent = nowTime();
   console.log("Counter updated");
 }
 
