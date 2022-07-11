@@ -15,8 +15,8 @@
         <div class="counter">
           <input type="number" class="number" min="-10000" max="10000">
           <span contenteditable="true">items</span>
-          <span>created: <span class="created"></span></span>
-          <span>updated: <span class="updated"></span></span>
+          <span class="info">created: <span class="created"></span></span>
+          <span class="info">updated: <span class="updated"></span></span>
           <button class="delete">Delete</button>
         </div>
       </div>
@@ -94,6 +94,7 @@ body {
 
 h1 {
   text-align: center;
+  color: #555;
 }
 
 button#add-counter {
@@ -111,6 +112,7 @@ button.delete {
   color: white;
   background: #555;
   padding: 10px;
+  margin-left: 10px;
 }
 
 .container {
@@ -124,6 +126,12 @@ button.delete {
   background: white;
   padding: 10px;
   margin-top: 10px;
+}
+
+.info {
+  color: #CCC;
+  font-size: 0.9em;
+  margin-left: 10px;
 }
     </style>
   </body>
