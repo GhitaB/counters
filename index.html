@@ -37,11 +37,35 @@ function saveSettings() {
   console.log("Settings saved.");
 }
 
+function restoreCounter(counter) {
+  var template = document.querySelector('#templates .counter');
+  var countersContainer = document.querySelector('.container #counters');
+  var clonedTemplate = template.cloneNode(true);
+  clonedTemplate.querySelector("span.created").textContent = counter.created;
+  clonedTemplate.querySelector("span.updated").textContent = counter.updated;
+  var counterId = counter.id;
+  clonedTemplate.id = counterId;
+  window.settings.countersNumber += counter.number;
+  countersContainer.appendChild(clonedTemplate);
+  console.log("Counter restored.");
+}
+
 function restoreSettings() {
   var configuration = localStorage.getItem('countersConfig');
   console.log("Found old config.");
   console.log(configuration);
   window.settings = JSON.parse(configuration);
+
+  for (const key in window.settings.countersInfo) {
+    var counter = window.settings.countersInfo[key];
+    restoreCounter({
+      id: key,
+      text: counter.text,
+      number: counter.number,
+      updated: counter.updated,
+      created: counter.created
+    });
+  }
 }
 
 function nowTime() {
