@@ -8,7 +8,7 @@
   <body>
     <div class="container">
       <div id="counters">
-        <p>asdasd</p>
+        <h1>Counters</h1>
       </div>
 
       <div id="templates" style="display: none;">
@@ -53,16 +53,38 @@ function deleteCounter(counterId) {
   console.log("Counter deleted");
 }
 
+function updateCounter(counterId) {
+  var counter = document.querySelector(
+    '.container #counters .counter#' + counterId + ' '
+  );
+  var now = new Date().toLocaleString('en-US', {
+    dateStyle: 'long',
+    timeStyle: 'short',
+    hour12: true
+  });
+  debugger;
+  counter.querySelector("span.updated").textContent = now;
+  console.log("Counter updated");
+}
+
 document.addEventListener('click', function (event) {
   if (event.target.matches('#add-counter')) {
     event.preventDefault();
     addCounter();
   }
+
   if (event.target.matches('.delete')) {
     event.preventDefault();
     var counterId = event.target.parentElement.id;
     deleteCounter(counterId);
   }
+
+  if (event.target.matches('.number')) {
+    event.preventDefault();
+    var counterId = event.target.parentElement.id;
+    updateCounter(counterId);
+  }
+
   return;
 }, false);
 
