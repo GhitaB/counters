@@ -52,7 +52,7 @@ function restoreCounter(counter) {
 
 function restoreSettings() {
   var configuration = localStorage.getItem('countersConfig');
-  if (configuration === undefined) return;
+  if (configuration == null) return;
   console.log("Found old config.");
   console.log(configuration);
   window.settings = JSON.parse(configuration);
