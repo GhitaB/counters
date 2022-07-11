@@ -26,7 +26,10 @@
     <script>
 
 window.settings = {
-  countersNumber: 0
+  countersNumber: 0,
+  countersInfo: {
+
+  }
 };
 
 function nowTime() {
@@ -37,11 +40,20 @@ function addCounter() {
   var template = document.querySelector('#templates .counter');
   var countersContainer = document.querySelector('.container #counters');
   var clonedTemplate = template.cloneNode(true);
-  clonedTemplate.querySelector("span.created").textContent = nowTime();
-  clonedTemplate.querySelector("span.updated").textContent = nowTime();
-  clonedTemplate.id = "c" + window.settings.countersNumber;
+  var now = nowTime();
+  clonedTemplate.querySelector("span.created").textContent = now;
+  clonedTemplate.querySelector("span.updated").textContent = now;
+  var counterId = "c" + window.settings.countersNumber;
+  clonedTemplate.id = counterId;
   window.settings.countersNumber += 1;
+  window.settings.countersInfo[counterId] = {
+    text: 'items',
+    created: now,
+    updated: now
+  };
   countersContainer.appendChild(clonedTemplate);
+  console.log("Counter added.");
+  console.log(window.settings);
 }
 
 function deleteCounter(counterId) {
