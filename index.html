@@ -14,10 +14,10 @@
       <div id="templates" style="display: none;">
         <div class="counter">
           <input type="number" class="number" min="-10000" max="10000">
-          <div contenteditable="true">items</div>
-          <button class="delete">delete</button>
+          <span contenteditable="true">items</span>
           <span>created: <span class="created"></span></span>
           <span>updated: <span class="updated"></span></span>
+          <button class="delete">delete</button>
         </div>
       </div>
 
@@ -86,5 +86,41 @@ document.addEventListener('click', function (event) {
 }, false);
 
     </script>
+
+    <style>
+body {
+  background: #888;
+}
+
+h1 {
+  text-align: center;
+}
+
+button#add-counter {
+  float: right;
+  margin-top: 20px;
+  border: none;
+  color: white;
+  background: #555;
+  padding: 10px;
+}
+
+.container {
+  background: #999;
+  padding: 10px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.counter {
+  background: white;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+input[type=number] {
+  width: 7em;
+}
+    </style>
   </body>
 </html>
