@@ -14,7 +14,7 @@
       <div id="templates" style="display: none;">
         <div class="counter">
           <input type="number" class="number" min="-10000" max="10000">
-          <span contenteditable="true">items</span>
+          <span class="editable" contenteditable="true">items</span>
           <span class="info">created: <span class="created"></span></span>
           <span class="info">updated: <span class="updated"></span></span>
           <button class="delete">Delete</button>
@@ -73,6 +73,12 @@ document.addEventListener('click', function (event) {
   }
 
   if (event.target.matches('.number')) {
+    event.preventDefault();
+    var counterId = event.target.parentElement.id;
+    updateCounter(counterId);
+  }
+
+  if (event.target.matches('.editable')) {
     event.preventDefault();
     var counterId = event.target.parentElement.id;
     updateCounter(counterId);
