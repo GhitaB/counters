@@ -70,7 +70,9 @@ function updateCounter(counterId) {
   var counter = document.querySelector(
     '.container #counters .counter#' + counterId + ' '
   );
-  counter.querySelector("span.updated").textContent = nowTime();
+  var now = nowTime();
+  counter.querySelector("span.updated").textContent = now;
+  window.settings.countersInfo[counterId].updated = now;
   console.log("Counter updated");
 }
 
