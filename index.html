@@ -60,6 +60,7 @@ function restoreCounter(counter) {
   var clonedTemplate = template.cloneNode(true);
   clonedTemplate.querySelector("span.created").textContent = counter.created;
   clonedTemplate.querySelector("span.updated").textContent = counter.updated;
+  clonedTemplate.querySelector("input.number").value = counter.number;
   var counterId = counter.id;
   clonedTemplate.id = counterId;
   countersContainer.appendChild(clonedTemplate);
