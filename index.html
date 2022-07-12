@@ -38,6 +38,16 @@ function saveSettings() {
   console.log("Settings saved.");
 }
 
+function removeSettings() {
+  localStorage.removeItem("countersConfig");
+  window.settings = {
+    countersNumber: 0,
+    countersInfo: {
+
+    }
+  };
+}
+
 function restoreCounter(counter) {
   var template = document.querySelector('#templates .counter');
   var countersContainer = document.querySelector('.container #counters');
@@ -121,6 +131,11 @@ document.addEventListener('click', function (event) {
   if (event.target.matches('#add-counter')) {
     event.preventDefault();
     addCounter();
+  }
+
+  if (event.target.matches('#delete-all')) {
+    event.preventDefault();
+    removeSettings();
   }
 
   if (event.target.matches('.delete')) {
