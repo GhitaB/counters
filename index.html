@@ -22,6 +22,7 @@
       </div>
 
       <button id="add-counter">Add counter</button>
+      <button id="delete-all">Delete all counters</button>
     </div>
     <script>
 
@@ -160,6 +161,11 @@ h1 {
   color: #555;
 }
 
+button {
+  cursor: pointer;
+}
+
+button#delete-all,
 button#add-counter {
   float: right;
   margin-top: 20px;
@@ -167,6 +173,7 @@ button#add-counter {
   color: white;
   background: #555;
   padding: 10px;
+  margin-right: 10px;
 }
 
 button.delete {
