@@ -46,6 +46,12 @@ function removeSettings() {
 
     }
   };
+
+  var counters = document.querySelectorAll('#counters .counter');
+
+  counters.forEach(counter => {
+    counter.remove();
+  });
 }
 
 function restoreCounter(counter) {
