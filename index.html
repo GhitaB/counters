@@ -45,7 +45,6 @@ function restoreCounter(counter) {
   clonedTemplate.querySelector("span.updated").textContent = counter.updated;
   var counterId = counter.id;
   clonedTemplate.id = counterId;
-  window.settings.countersNumber += counter.number;
   countersContainer.appendChild(clonedTemplate);
   console.log("Counter restored.");
 }
